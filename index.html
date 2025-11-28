@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WoWW Decors - Crafting Extraordinary Celebrations</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap" rel="stylesheet">
+
+    <style>
+       
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .hero-text-shadow {
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+        }
+        /* Optional: for a smoother scroll behavior */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body class="bg-purple-50 text-gray-800">
+
+    <div id="home" class="h-screen w-full flex flex-col"> 
+       <nav class="top-0 z-50 w-full bg-purple-50/90 backdrop-blur-md shadow-md relative">
+            <div class="flex flex-wrap items-center justify-between px-6 py-4 md:px-16 md:py-8">
+                
+                <a href="index.html" class="text-2xl font-bold text-purple-900">
+                    WoWW Decors.
+                </a>
+
+                <button id="menu-btn" class="md:hidden p-2 text-purple-900 rounded-md hover:bg-purple-200 focus:outline-none transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+
+                <div id="menu" class="hidden absolute top-full left-0 w-full bg-white/95 backdrop-blur-xl border-t border-purple-100 shadow-2xl md:static md:block md:w-auto md:bg-transparent md:shadow-none md:border-none">
+                    <div class="flex flex-col md:flex-row md:gap-8 text-lg font-bold text-gray-700 p-6 md:p-0">
+                        <a href="index.html" class="block py-3 border-b border-gray-100 hover:text-purple-700 hover:pl-2 rounded transition-all duration-300 md:hover:bg-transparent md:hover:pl-0 md:border-none md:p-0">
+                            Home
+                        </a>
+                        <a href="gallery.html" class="block py-3 border-b border-gray-100 hover:text-purple-700 hover:pl-2 rounded transition-all duration-300 md:hover:bg-transparent md:hover:pl-0 md:border-none md:p-0">
+                            Gallery
+                        </a>
+                        <a href="contact.html" class="block py-3 hover:text-purple-700 hover:pl-2 rounded transition-all duration-300 md:hover:bg-transparent md:hover:pl-0 md:border-none md:p-0">
+                            Contact Us
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </nav>
+
+
+
+   
+        
+        <div id="hero" class="grow flex flex-row justify-between h-full bg-[url('resources/images/hero-Section.png')] bg-no-repeat bg-cover bg-center">
+            <div class="h-full w-full bg-gray-950/60 text-white flex flex-col justify-center p-8 px-16">
+                <span class="md:text-6xl text-3xl font-bold m-2 max-w-3xl hero-text-shadow">
+                    Crafting Extraordinary Celebrations
+                </span> 
+                <p class="md:text-2xl text-lg mx-2 my-6 hero-text-shadow">
+                    Bespoke Wedding & Social Event Design
+                </p>
+
+                <a href="gallery.html" class="w-max mx-2 relative top-12">
+                    <button class="py-4 px-8 rounded-lg bg-[#c060d9] hover:bg-purple-600 transition-all duration-300 ease-in-out hover:shadow-lg hover:-translate-y-1 w-max font-bold text-lg">
+                        Discover Our Events
+                    </button>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+
+    <div id="about" class="w-full px-16 my-24 text-center"> <h2 class="text-4xl font-bold my-6 text-purple-900">More Than Decor, It's a Feeling</h2>
+        
+        <div class="w-24 h-1 bg-purple-600 mx-auto mb-8"></div>
+
+        <p class="max-w-3xl mx-auto text-lg text-gray-700 leading-loose">
+            We believe that the most beautiful events aren't just seen—they're felt.
+            It’s in the gasp of delight as you enter the room, the warmth that makes guests feel welcome, and the joy that turns a moment into a cherished memory.
+            <br /><br />Our approach is built on this simple idea. We listen to your vision, not just your checklist.
+            We craft with intention, infusing every detail with purpose and love. 
+            For us, it's about transforming your space and your experience.
+        </p>
+    </div>
+
+
+    <div class="w-full px-16 my-24" id="services-breakdown">
+    <h2 class="text-4xl font-bold my-6 text-center text-purple-900">What We Offer</h2>
+    <p class="text-lg text-gray-700 text-center max-w-3xl mx-auto">
+        Every celebration deserves thoughtful details. Here’s a deeper look at how we create unforgettable moments.
+    </p>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 mt-16">
+
+        <div class="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
+            <div class="h-16 w-16 mx-auto bg-purple-200 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                <svg class="h-8 w-8 text-purple-700" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="M4 6h16M4 12h10M4 18h16"/>
+                </svg>
+            </div>
+            <h3 class="text-xl font-bold text-gray-800 mt-6 mb-2 text-center">Theme Concept Development</h3>
+            <p class="text-gray-600 text-center">Personalized moodboards and creative direction tailored to your story and vision.</p>
+        </div>
+
+        <div class="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
+            <div class="h-16 w-16 mx-auto bg-purple-200 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                <svg class="h-8 w-8 text-purple-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                </svg>
+            </div>
+            <h3 class="text-xl font-bold text-gray-800 mt-6 mb-2 text-center">Floral Art & Installations</h3>
+            <p class="text-gray-600 text-center">Luxurious floral arrangements, centerpieces, and custom-designed installations.</p>
+        </div>
+
+        <div class="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
+            <div class="h-16 w-16 mx-auto bg-purple-200 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                <svg class="h-8 w-8 text-purple-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 3v18m9-9H3"/>
+                </svg>
+            </div>
+            <h3 class="text-xl font-bold text-gray-800 mt-6 mb-2 text-center">Lighting Design</h3>
+            <p class="text-gray-600 text-center">Ambient lighting, fairy lights, chandeliers, and mood lighting for magical ambience.</p>
+        </div>
+
+        <div class="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
+            <div class="h-16 w-16 mx-auto bg-purple-200 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                <svg class="h-8 w-8 text-purple-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path d="M3 12h18M12 3v18"/>
+                </svg>
+            </div>
+            <h3 class="text-xl font-bold text-gray-800 mt-6 mb-2 text-center">Entry Arch & Welcome Boards</h3>
+            <p class="text-gray-600 text-center">Beautiful, themed entrances with personalized signage & creative décor elements.</p>
+        </div>
+
+        <div class="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
+            <div class="h-16 w-16 mx-auto bg-purple-200 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                <svg class="h-8 w-8 text-purple-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="10"/>
+                </svg>
+            </div>
+            <h3 class="text-xl font-bold text-gray-800 mt-6 mb-2 text-center">Guest Experience Styling</h3>
+            <p class="text-gray-600 text-center">Hospitality décor, seating ambiance, and guest-focused touchpoints for comfort.</p>
+        </div>
+
+        <div class="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
+            <div class="h-16 w-16 mx-auto bg-purple-200 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                <svg class="h-8 w-8 text-purple-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <rect width="20" height="14" x="2" y="5" rx="2"/>
+                </svg>
+            </div>
+            <h3 class="text-xl font-bold text-gray-800 mt-6 mb-2 text-center">Photo Zones & Backdrops</h3>
+            <p class="text-gray-600 text-center">Instagram-worthy décor corners, thematic backdrops & custom creative setups.</p>
+        </div>
+        
+    </div>
+</div>
+
+
+
+    <div class="w-full px-16 my-24">
+        <h2 class="text-4xl font-bold my-6 text-center text-purple-900">Featured Events</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+            
+            <div class="group relative rounded-lg overflow-hidden shadow-xl transform transition-all duration-300 hover:shadow-2xl hover:scale-[1.02]">
+                <img src="resources/images/extra-2.png" alt="Elegant wedding reception" class="w-full h-96 object-cover">
+                <div class="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <h3 class="text-2xl font-bold text-white">Priya & Rohan</h3>
+                    <p class="text-purple-100">Napa Valley, CA</p>
+                </div>
+            </div>
+
+            <div class="group relative rounded-lg overflow-hidden shadow-xl transform transition-all duration-300 hover:shadow-2xl hover:scale-[1.02]">
+                <img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0MzczNDN8MHwxfGFsbHx8fHx8fHx8fDE3MTc4MDI4MTJ8&ixlib=rb-4.0.3&q=80&w=1080" alt="Outdoor sangeet ceremony" class="w-full h-96 object-cover">
+                <div class="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <h3 class="text-2xl font-bold text-white">Anita's Sangeet</h3>
+                    <p class="text-purple-100">Miami, FL</p>
+                </div>
+            </div>
+
+            <div class="group relative rounded-lg overflow-hidden shadow-xl transform transition-all duration-300 hover:shadow-2xl hover:scale-[1.02]">
+                <img src="resources/images/huh.png" alt="Modern mandap setup" class="w-full h-96 object-cover">
+                <div class="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <h3 class="text-2xl font-bold text-white">Meera & Arjun</h3>
+                    <p class="text-purple-100">Chicago, IL</p>
+                </div>
+            </div>
+        </div>
+        <div class="text-center mt-16">
+            <a href="gallery.html" class="w-max inline-block">
+                <button class="py-4 px-8 rounded-lg bg-[#c060d9] hover:bg-purple-600 transition-all duration-300 ease-in-out hover:shadow-lg hover:-translate-y-1 w-max text-white font-bold text-lg">
+                    View Our Full Gallery
+                </button>
+            </a>
+        </div>
+    </div>
+
+    <div class="w-full my-24 py-24 px-16 bg-purple-100">
+        <h2 class="text-4xl font-bold my-6 text-center text-purple-900">Kind Words From Our Clients</h2>
+        <div class="flex flex-col md:flex-row gap-8 mt-16 max-w-6xl mx-auto">
+
+            <div class="flex-1 bg-white p-10 rounded-lg shadow-lg transition-all duration-300 hover:shadow-xl">
+                <span class="text-7xl text-purple-200 font-serif block -mb-8">“</span>
+                <p class="text-gray-700 text-lg italic leading-relaxed z-10 relative">WoWW Decors didn't just plan our wedding; they captured our story. Every detail was flawless and deeply personal. Our guests are still talking about it!"</p>
+                <p class="text-right font-bold text-purple-800 text-lg mt-6">— Anita & Raj S.</p>
+            </div>
+
+            <div class="flex-1 bg-white p-10 rounded-lg shadow-xl transform md:scale-105 transition-all duration-300 hover:shadow-2xl hover:scale-110">
+                <span class="text-7xl text-purple-200 font-serif block -mb-8">“</span>
+                <p class="text-gray-700 text-lg italic leading-relaxed z-10 relative">The most creative, professional, and caring team we could have ever asked for. They took our vague ideas and turned them into a breathtaking reality."</p>
+                <p class="text-right font-bold text-purple-800 text-lg mt-6">— Michael & Priya K.</p>
+            </div>
+
+            <div class="flex-1 bg-white p-10 rounded-lg shadow-lg transition-all duration-300 hover:shadow-xl">
+                <span class="text-7xl text-purple-200 font-serif block -mb-8">“</span>
+                <p class="text-gray-700 text-lg italic leading-relaxed z-10 relative">Flawless execution from start to finish. They handled everything with such grace and allowed us to truly be present and enjoy our own wedding day."</p>
+                <p class="text-right font-bold text-purple-800 text-lg mt-6">— Sameer J.</p>
+            </div>
+        </div>
+    </div>
+
+
+    <footer id="contact" class="relative bottom-0 bg-gray-800 text-white px-16 py-16">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-12 w-full">
+
+            <div class="p-4">
+                <h2 class="text-2xl font-bold mb-4">WoWW Decors.</h2>
+                <p class="text-gray-300 leading-relaxed">
+                    Crafting Extraordinary Celebrations. From heartfelt moments to breathtaking celebrations, we bring your visions to life.
+                </p> 
+            </div>
+
+            <div class="p-4"> 
+                <h2 class="text-xl font-bold mb-4">Explore</h2>
+                <ul class="space-y-2 text-gray-300">
+                    <li><a href="#home" class="hover:text-purple-300 transition-colors duration-300">Home</a></li>
+                    <li><a href="#about" class="hover:text-purple-300 transition-colors duration-300">About Us</a></li>
+                    <li><a href="gallery.html" class="hover:text-purple-300 transition-colors duration-300">Gallery</a></li>
+                    <li><a href="contact.html" class="hover:text-purple-300 transition-colors duration-300">Contact Us</a></li>
+                </ul>
+            </div>
+            
+            <div class="p-4"> 
+                <h2 class="text-xl font-bold mb-4">Get in Touch</h2>
+                <p class="text-gray-300 leading-relaxed">
+                    Indiana, Indianapolis, IN, United States, Indiana
+                    <br>
+                    (By Appointment Only)
+                </p>
+                <h2 class="text-xl font-bold mt-6 mb-2">Talk To Us</h2>
+                <p class="text-gray-300">
+                    P: <a href="tel:+13176476669" class="hover:text-white hover:underline">+1 3176476669</a>
+                </p>
+                <p class="text-gray-300">
+                    E: <a href="mailto:wowwdecorsandevents@gmail.com" class="hover:text-white hover:underline">wowwdecorsandevents@gmail.com</a>
+                </p>
+            </div>
+            
+            <div class="p-4"> 
+                <h2 class="text-xl font-bold mb-4">Follow Our Journey</h2> 
+                <div class="flex flex-row gap-5">
+                    <a href="https://www.instagram.com/wowwdecorsandevents?igsh=MWRldjNqY3BmeWg3ZA==" target="_blank" rel="noopener noreferrer" class="text-gray-300 hover:text-purple-300 transition-colors duration-300">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.148 3.229-1.667 4.77-4.919 4.919-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-3.251-.149-4.771-1.69-4.919-4.919-.058-1.265-.07-1.646-.07-4.85s.012-3.584.07-4.85C2.31 3.856 3.83 2.31 7.081 2.163 8.346 2.105 8.72 2.093 12 2.093m0-2.093c-3.259 0-3.667.014-4.947.072-4.305.197-7.302 3.193-7.5 7.5-.058 1.28-.072 1.688-.072 4.947s.014 3.668.072 4.947c.197 4.305 3.193 7.302 7.5 7.5 1.28.058 1.688.072 4.947.072s3.668-.014 4.947-.072c4.305-.197 7.302-3.193 7.5-7.5.058-1.28.072 1.688.072-4.947s-.014-3.668-.072-4.947c-.197-4.305-3.193-7.302-7.5-7.5-1.28-.058-1.688-.072-4.947-.072zM12 6.848c-2.828 0-5.131 2.303-5.131 5.131s2.303 5.131 5.131 5.131 5.131-2.303 5.131-5.131-2.303-5.131-5.131-5.131zm0 8.17c-1.68 0-3.04-1.36-3.04-3.04s1.36-3.04 3.04-3.04 3.04 1.36 3.04 3.04-1.36 3.04-3.04 3.04zm4.41-8.21a1.21 1.21 0 1 1-2.42 0 1.21 1.21 0 0 1 2.42 0z"></path>
+                        </svg>
+                    </a>
+
+                    <a href="https://www.facebook.com/share/1AoH7Au6Ym/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="text-gray-300 hover:text-purple-300 transition-colors duration-300">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="w-full text-center mt-12 pt-8 border-t border-gray-600 text-gray-400">
+            © 2025 WoWW Decors. All Rights Reserved. | Site Design by The ShoreKeeper
+        </div>
+    </footer>
+        <script>
+        const btn = document.getElementById('menu-btn');
+        const menu = document.getElementById('menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>
