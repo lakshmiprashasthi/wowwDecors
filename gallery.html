@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Gallery - WoWW Decors</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            grid-auto-rows: 8px; /* tiny row unit so JS can set exact spans */
+            max-width: 1120px;
+            margin: 0 auto;
+        }
+        @media (max-width: 1024px){ .gallery-grid { grid-template-columns: repeat(2,1fr); } }
+        @media (max-width: 640px){ .gallery-grid { grid-template-columns: 1fr; } }
+
+        /* keep height:auto while measuring, then JS will set height:100% to perfectly fill spanned rows */
+        .gallery-item img{ width:100%; height:auto; display:block; object-fit:cover; }
+        .image-overlay{ position:absolute; inset:0; display:flex; align-items:flex-end; padding:1rem;
+            background:linear-gradient(to top, rgba(0,0,0,.55), rgba(0,0,0,0)); opacity:0; transition:opacity .18s;}
+        .gallery-item:hover .image-overlay{ opacity:1; }
+
+        /* --- NEW: mobile fixes --- */
+        /* On mobile use single-column natural flow (no row spans) to avoid layout gaps */
+        @media (max-width: 768px) {
+          .gallery-grid { grid-template-columns: 1fr !important; grid-auto-rows: auto !important; }
+          .gallery-item { grid-row-end: auto !important; grid-column-end: auto !important; }
+          .gallery-item img { height: auto !important; width: 100% !important; object-fit: cover !important; }
+        }
+    </style>
+    </head>
+<body class="bg-purple-50 text-gray-800">
+
+<nav class="top-0 z-50 w-full bg-purple-50/90 backdrop-blur-md shadow-md relative">
+            <div class="flex flex-wrap items-center justify-between px-6 py-4 md:px-16 md:py-8">
+                
+                <a href="index.html" class="text-2xl font-bold text-purple-900">
+                    WoWW Decors.
+                </a>
+
+                <button id="menu-btn" class="md:hidden p-2 text-purple-900 rounded-md hover:bg-purple-200 focus:outline-none transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+
+                <div id="menu" class="hidden absolute top-full left-0 w-full bg-white/95 backdrop-blur-xl border-t border-purple-100 shadow-2xl md:static md:block md:w-auto md:bg-transparent md:shadow-none md:border-none">
+                    <div class="flex flex-col md:flex-row md:gap-8 text-lg font-bold text-gray-700 p-6 md:p-0">
+                        <a href="index.html" class="block py-3 border-b border-gray-100 hover:text-purple-700 hover:pl-2 rounded transition-all duration-300 md:hover:bg-transparent md:hover:pl-0 md:border-none md:p-0">
+                            Home
+                        </a>
+                        <a href="gallery.html" class="block py-3 border-b border-gray-100 hover:text-purple-700 hover:pl-2 rounded transition-all duration-300 md:hover:bg-transparent md:hover:pl-0 md:border-none md:p-0">
+                            Gallery
+                        </a>
+                        <a href="contact.html" class="block py-3 hover:text-purple-700 hover:pl-2 rounded transition-all duration-300 md:hover:bg-transparent md:hover:pl-0 md:border-none md:p-0">
+                            Contact Us
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </nav>
+
+
+
+    
+<main class="max-w-6xl mx-auto px-6 py-10">
+    <h1 class="text-4xl font-extrabold mb-6 text-center md:text-left text-gray-800">📸 Our Portfolio in Bloom</h1>
+
+    <div id="category-buttons" class="flex flex-wrap gap-3 mb-8 justify-center md:justify-start">
+        <button class="category-btn px-5 py-2 rounded-full text-sm font-medium bg-purple-600 text-white" data-category="All Events">All Events</button>
+        <button class="category-btn px-5 py-2 rounded-full text-sm font-medium text-gray-700 hover:bg-purple-100" data-category="Weddings">Weddings</button>
+        <button class="category-btn px-5 py-2 rounded-full text-sm font-medium text-gray-700 hover:bg-purple-100" data-category="Social Affairs">Social Affairs</button>
+        <button class="category-btn px-5 py-2 rounded-full text-sm font-medium text-gray-700 hover:bg-purple-100" data-category="Birthday">Birthday</button>
+        <button class="category-btn px-5 py-2 rounded-full text-sm font-medium text-gray-700 hover:bg-purple-100" data-category="Corporate">Corporate</button>
+    </div>
+
+    <div id="gallery-grid" class="gallery-grid px-2">
+        </div>
+</main>
+
+<footer id="contact" class="relative bottom-0 bg-gray-800 text-white px-16 py-16">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-12 w-full">
+
+            <div class="p-4">
+                <h2 class="text-2xl font-bold mb-4">WoWW Decors.</h2>
+                <p class="text-gray-300 leading-relaxed">
+                    Crafting Extraordinary Celebrations. From heartfelt moments to breathtaking celebrations, we bring your visions to life.
+                </p> 
+            </div>
+
+            <div class="p-4"> 
+                <h2 class="text-xl font-bold mb-4">Explore</h2>
+                <ul class="space-y-2 text-gray-300">
+                    <li><a href="#home" class="hover:text-purple-300 transition-colors duration-300">Home</a></li>
+                    <li><a href="#about" class="hover:text-purple-300 transition-colors duration-300">About Us</a></li>
+                    <li><a href="gallery.html" class="hover:text-purple-300 transition-colors duration-300">Gallery</a></li>
+                    <li><a href="contact.html" class="hover:text-purple-300 transition-colors duration-300">Contact Us</a></li>
+                </ul>
+            </div>
+            
+            <div class="p-4"> 
+                <h2 class="text-xl font-bold mb-4">Get in Touch</h2>
+                <p class="text-gray-300 leading-relaxed">
+                    Indiana, Indianapolis, IN, United States, Indiana
+                    <br>
+                    (By Appointment Only)
+                </p>
+                <h2 class="text-xl font-bold mt-6 mb-2">Talk To Us</h2>
+                <p class="text-gray-300">
+                    P: <a href="tel:+13176476669" class="hover:text-white hover:underline">+1 3176476669</a>
+                </p>
+                <p class="text-gray-300">
+                 E: <a href="mailto:wowwdecorsandevents@gmail.com" class="hover:text-white hover:underline">wowwdecorsandevents@gmail.com</a>
+                </p>
+            </div>
+            
+            <div class="p-4"> 
+                <h2 class="text-xl font-bold mb-4">Follow Our Journey</h2> 
+                <div class="flex flex-row gap-5">
+                    <a href="https://www.instagram.com/wowwdecorsandevents?igsh=MWRldjNqY3BmeWg3ZA==" target="_blank" rel="noopener noreferrer" class="text-gray-300 hover:text-purple-300 transition-colors duration-300">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.148 3.229-1.667 4.77-4.919 4.919-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-3.251-.149-4.771-1.69-4.919-4.919-.058-1.265-.07-1.646-.07-4.85s.012-3.584.07-4.85C2.31 3.856 3.83 2.31 7.081 2.163 8.346 2.105 8.72 2.093 12 2.093m0-2.093c-3.259 0-3.667.014-4.947.072-4.305.197-7.302 3.193-7.5 7.5-.058 1.28-.072 1.688-.072 4.947s.014 3.668.072 4.947c.197 4.305 3.193 7.302 7.5 7.5 1.28.058 1.688.072 4.947.072s3.668-.014 4.947-.072c4.305-.197 7.302-3.193 7.5-7.5.058-1.28.072 1.688.072-4.947s-.014-3.668-.072-4.947c-.197-4.305-3.193-7.302-7.5-7.5-1.28-.058-1.688-.072-4.947-.072zM12 6.848c-2.828 0-5.131 2.303-5.131 5.131s2.303 5.131 5.131 5.131 5.131-2.303 5.131-5.131-2.303-5.131-5.131-5.131zm0 8.17c-1.68 0-3.04-1.36-3.04-3.04s1.36-3.04 3.04-3.04 3.04 1.36 3.04 3.04-1.36 3.04-3.04 3.04zm4.41-8.21a1.21 1.21 0 1 1-2.42 0 1.21 1.21 0 0 1 2.42 0z"></path>
+                        </svg>
+                    </a>
+
+                    <a href="https://www.facebook.com/share/1AoH7Au6Ym/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="text-gray-300 hover:text-purple-300 transition-colors duration-300">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="w-full text-center mt-12 pt-8 border-t border-gray-600 text-gray-400">
+            © 2025 WoWW Decors. All Rights Reserved. | Site Design by The ShoreKeeper
+        </div>
+    </footer>
+
+<script>
+    // simplified data + renderer + improved span logic to avoid leftover bottom space
+    const galleryData = [
+        { src: 'resources/images/hehe.png', caption: 'Bridal Moments', category: 'Social Affairs' },
+        { src: 'resources/images/hello.jpeg', caption: 'Baby Shower', category: 'Social Affairs' },
+        { src: 'resources/images/hii.jpeg', caption: "Mayukha's Birthday", category: 'Birthday' },
+        { src: 'resources/images/huh.png', caption: 'Indoor Charm', category: 'Weddings'},
+        { src: 'resources/images/hainn.png', caption: "Ananya's Birthday", category: 'Birthday' },
+        { src: 'resources/images/extra-1.png', caption: 'OfficeGlow Gala', category: 'Corporate' },
+        { src: 'resources/images/extra-2.png', caption: 'Garden Tales', category: 'Social Affairs' },
+        { src: 'resources/images/extra-3.png', caption: 'Outdoor Charm',category: 'Weddings' },
+        { src: 'resources/images/extra-4.png', caption: '1st Birthday' ,category: 'Birthday' } 
+    ];
+
+    const $grid = $('#gallery-grid');
+
+    // breakpoint to disable masonry on small screens
+    const MOBILE_BREAK = 768;
+
+    function makeCard(item){
+        return $(` 
+            <div class="gallery-item relative rounded-lg overflow-hidden bg-gray-100 shadow-md transform transition hover:scale-105">
+                <img src="${item.src}" alt="${item.caption}" loading="lazy"/>
+                <div class="image-overlay"><span class="text-white font-semibold">${item.caption}</span></div>
+            </div>
+        `); 
+    }
+
+    // compute row span based on natural aspect ratio and card width,
+    // then set img height:100% so it exactly fills the spanned rows — eliminates bottom gap.
+    function applySpan($el){
+        const img = $el.find('img')[0];
+        // If mobile - clear spans and keep natural flow
+        if (!img || !img.naturalWidth || !img.naturalHeight) return;
+        if (window.innerWidth < MOBILE_BREAK) {
+            // ensure natural flow on small screens
+            $el.css({ 'grid-row-end': '', 'grid-column-end': '' });
+            $($el.find('img')).css({ height: 'auto', width: '100%', 'object-fit': 'cover' });
+            return;
+        }
+
+        const grid = $grid[0];
+        const row = parseFloat(getComputedStyle(grid).getPropertyValue('grid-auto-rows')) || 8;
+        const gap = parseFloat(getComputedStyle(grid).getPropertyValue('gap')) || 16;
+
+        // use element content width for precise expected height
+        const cardWidth = $el.width();
+        const expectedHeight = (img.naturalHeight / img.naturalWidth) * cardWidth;
+
+        // small eps to avoid rounding issues
+        const eps = 0.5;
+        const span = Math.max(1, Math.ceil((expectedHeight + gap - eps) / (row + gap)));
+
+        $el.css('grid-row-end', 'span ' + span);
+        $($el.find('img')).css({ height: '100%', width: '100%', 'object-fit': 'cover' });
+    }
+
+    function render(category = 'All Events'){
+        $grid.empty();
+        const list = category === 'All Events' ? galleryData : galleryData.filter(x => x.category === category);
+        list.forEach((item, idx) => {
+            const $card = makeCard(item);
+            $grid.append($card);
+
+            const $img = $card.find('img');
+
+            $img.on('load error', function(){
+                const ar = (this.naturalWidth || 1) / (this.naturalHeight || 1);
+                $($img).css('object-position', ar < 0.9 ? 'bottom center' : 'center center');
+
+                // ensure img is auto while measuring (in case)
+                $($img).css({ height: 'auto', width: '100%' });
+
+                // only apply masonry spans on non-mobile
+                if (window.innerWidth >= MOBILE_BREAK) applySpan($card);
+                else {
+                    // ensure images use natural height on mobile
+                    $card.css({ 'grid-row-end': '', 'grid-column-end': '' });
+                    $($card.find('img')).css({ height: 'auto', width: '100%', 'object-fit': 'cover' });
+                }
+
+                // make first item prominent on wide screens
+                if(idx === 0 && window.innerWidth >= 1024){
+                    $card.css('grid-column-end', 'span 2');
+                    if (window.innerWidth >= MOBILE_BREAK) applySpan($card);
+                } else {
+                    $card.css('grid-column-end', '');
+                }
+            });
+
+            if($img[0].complete) $img.trigger('load');
+        });
+
+        // small screens: clear forced spans and reset img heights for natural flow
+        setTimeout(()=>{ 
+            if(window.innerWidth < MOBILE_BREAK) $grid.children().css({'grid-row-end':'','grid-column-end':''}).find('img').css({height:'auto', width:'100%'}); 
+        }, 100);
+    }
+
+    $(function(){
+        render();
+        $('.category-btn').on('click', function(){
+            $('.category-btn').removeClass('bg-purple-600 text-white');
+            $(this).addClass('bg-purple-600 text-white');
+            render($(this).data('category'));
+        });
+
+        let t;
+        $(window).on('resize', function(){
+            clearTimeout(t);
+            t = setTimeout(function(){
+                $grid.children().each(function(){ 
+                    if(window.innerWidth < MOBILE_BREAK){ 
+                        $(this).css({'grid-row-end':'','grid-column-end':''}).find('img').css({height:'auto', width:'100%'}); 
+                    } else applySpan($(this)); 
+                });
+            },120);
+        });
+    });
+</script>
+<script>
+        const btn = document.getElementById('menu-btn');
+        const menu = document.getElementById('menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>
